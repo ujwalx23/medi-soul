@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Navbar } from "@/components/Navbar";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
-import { Save } from "lucide-react";
+import { Save, User, Mail, Calendar, AlertCircle } from "lucide-react";
 
 const Profile = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [language, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState({
     full_name: "",
@@ -102,31 +104,15 @@ const Profile = () => {
   };
 
   if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Activity className="h-12 w-12 text-primary animate-glow" />
-      </div>
-    );
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="glass rounded-2xl p-6 mb-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/chat")}
-              className="hover:bg-white/10"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-            <Activity className="h-6 w-6 text-primary animate-glow" />
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              My Profile
-            </h1>
-          </div>
+    <div className="min-h-screen">
+      <Navbar language={language} onLanguageChange={setLanguage} />
+      
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-2xl mx-auto">
 
           <div className="space-y-4">
             <div>

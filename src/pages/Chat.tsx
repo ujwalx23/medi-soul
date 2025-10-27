@@ -121,76 +121,25 @@ const Chat = () => {
   };
 
   if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse">
-          <Activity className="h-12 w-12 text-primary animate-glow" />
-        </div>
-      </div>
-    );
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="glass rounded-2xl p-4 mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/")}
-              className="hover:bg-white/10"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-            <Activity className="h-6 w-6 text-primary animate-glow" />
-            <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              MediAgent
-            </h1>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/profile")}
-              className="hover:bg-white/10"
-            >
-              <UserIcon className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/history")}
-              className="hover:bg-white/10"
-            >
-              <History className="h-4 w-4" />
-            </Button>
-            <LanguageSwitcher language={language} onLanguageChange={setLanguage} />
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={signOut}
-              className="hover:bg-white/10"
-            >
-              <LogOut className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar language={language} onLanguageChange={setLanguage} />
 
-        {/* Chat Container */}
-        <div className="glass rounded-2xl p-6 mb-4 h-[calc(100vh-250px)] overflow-y-auto">
-          {messages.map((message, index) => (
-            <ChatMessage
-              key={index}
-              message={message.text}
-              isUser={message.isUser}
-            />
-          ))}
-        </div>
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 max-w-4xl mx-auto w-full">
+        {messages.map((message, index) => (
+          <ChatMessage
+            key={index}
+            message={message.text}
+            isUser={message.isUser}
+          />
+        ))}
+      </div>
 
-        {/* Input */}
-        <div className="glass rounded-2xl p-4">
+      <div className="sticky bottom-0 border-t glass p-4">
+        <div className="max-w-4xl mx-auto">
           <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} language={language} />
         </div>
       </div>
