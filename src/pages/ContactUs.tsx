@@ -97,8 +97,8 @@ const ContactUs = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-sm text-muted-foreground">support@medisoul.com</p>
-                      <p className="text-sm text-muted-foreground">info@medisoul.com</p>
+                      <p className="text-sm text-muted-foreground">aimedic23@gmail.com</p>
+                      <p className="text-sm text-muted-foreground">teamsupport6811@gmail.com</p>
                     </div>
                   </div>
 
