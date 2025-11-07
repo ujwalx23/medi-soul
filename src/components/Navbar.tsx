@@ -22,12 +22,11 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
       home: "Home",
       chat: "Chat",
       about: "About",
-      howItWorks: "How It Works",
       contact: "Contact",
       healthGuide: "Health Guide",
       pharmacies: "Pharmacies",
-      profile: "Profile",
       trackRecords: "Track Records",
+      profile: "Profile",
       upcomingFeatures: "Upcoming Features",
       login: "Login",
       logout: "Logout",
@@ -36,12 +35,11 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
       home: "होम",
       chat: "चैट",
       about: "हमारे बारे में",
-      howItWorks: "यह कैसे काम करता है",
       contact: "संपर्क करें",
       healthGuide: "स्वास्थ्य गाइड",
       pharmacies: "फार्मेसी",
-      profile: "प्रोफ़ाइल",
       trackRecords: "रिकॉर्ड ट्रैक करें",
+      profile: "प्रोफ़ाइल",
       upcomingFeatures: "आगामी सुविधाएं",
       login: "लॉगिन",
       logout: "लॉगआउट",
@@ -50,12 +48,11 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
       home: "मुख्यपृष्ठ",
       chat: "चॅट",
       about: "आमच्याबद्दल",
-      howItWorks: "हे कसे कार्य करते",
       contact: "संपर्क",
       healthGuide: "आरोग्य मार्गदर्शक",
       pharmacies: "फार्मसी",
-      profile: "प्रोफाइल",
       trackRecords: "रेकॉर्ड ट्रॅक करा",
+      profile: "प्रोफाइल",
       upcomingFeatures: "आगामी वैशिष्ट्ये",
       login: "लॉगिन",
       logout: "लॉगआउट",
@@ -64,12 +61,11 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
       home: "Inicio",
       chat: "Chat",
       about: "Acerca de",
-      howItWorks: "Cómo Funciona",
       contact: "Contacto",
       healthGuide: "Guía de Salud",
       pharmacies: "Farmacias",
-      profile: "Perfil",
       trackRecords: "Seguimiento",
+      profile: "Perfil",
       upcomingFeatures: "Próximas Funciones",
       login: "Iniciar sesión",
       logout: "Cerrar sesión",
@@ -98,28 +94,19 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
             <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
               {t.about}
             </Link>
-            <Link to="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
-              {t.howItWorks}
-            </Link>
             <Link to="/health-guide" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
               {t.healthGuide}
             </Link>
             <Link to="/pharmacies" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
               {t.pharmacies}
             </Link>
+            <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">
+              {t.trackRecords}
+            </Link>
             
             {user && (
               <TooltipProvider>
                 <div className="flex items-center gap-1 ml-2 border-l border-white/10 pl-2">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link to="/track-records" className="p-2 hover:bg-white/10 rounded-lg transition-colors">
-                        <Pill className="h-5 w-5" />
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent><p>{t.trackRecords}</p></TooltipContent>
-                  </Tooltip>
-
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Link to="/upcoming-features" className="p-2 hover:bg-white/10 rounded-lg transition-colors">
@@ -195,14 +182,8 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
             <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
               {t.home}
             </Link>
-            <Link to="/chat" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-              {t.chat}
-            </Link>
             <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
               {t.about}
-            </Link>
-            <Link to="/how-it-works" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-              {t.howItWorks}
             </Link>
             <Link to="/health-guide" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
               {t.healthGuide}
@@ -210,20 +191,23 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
             <Link to="/pharmacies" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
               {t.pharmacies}
             </Link>
+            <Link to="/track-records" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+              {t.trackRecords}
+            </Link>
             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
               {t.contact}
             </Link>
             
             {user && (
               <>
-                <Link to="/track-records" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
-                  {t.trackRecords}
-                </Link>
                 <Link to="/upcoming-features" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   {t.upcomingFeatures}
                 </Link>
                 <Link to="/profile" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
                   {t.profile}
+                </Link>
+                <Link to="/chat" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">
+                  {t.chat}
                 </Link>
               </>
             )}

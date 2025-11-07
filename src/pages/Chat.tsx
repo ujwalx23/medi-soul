@@ -222,6 +222,18 @@ const Chat = () => {
           </div>
         </div>
 
+        <div className="glass rounded-2xl p-6 mb-4 border-2 border-muted">
+          <h3 className="text-lg font-bold mb-3">
+            💬 In-App General Chatbot
+          </h3>
+          <p className="text-sm text-muted-foreground mb-2">
+            This is a <strong className="text-foreground">general chatbot</strong> that can help you in any language with various topics. 
+          </p>
+          <p className="text-sm text-primary font-semibold">
+            ⚠️ For health-related queries or prescriptions, please use the AI Medical Assistant chatbots mentioned above (WhatsApp or Web).
+          </p>
+        </div>
+
         {messages.map((message, index) => (
           <ChatMessage
             key={index}
