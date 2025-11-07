@@ -7,9 +7,9 @@ const About = () => {
 
   const translations = {
     en: {
-      title: "About Medi Soul",
+      title: "About MediSoul",
       missionTitle: "Our Mission",
-      missionText: "Medi Soul is dedicated to making healthcare accessible to everyone through AI-powered technology. We believe that everyone deserves instant access to reliable health information in their native language. Our platform bridges the gap between patients and healthcare by providing 24/7 AI-powered medical assistance.",
+      missionText: "MediSoul is dedicated to making healthcare accessible to everyone through AI-powered technology. We believe that everyone deserves instant access to reliable health information in their native language. Our platform bridges the gap between patients and healthcare by providing 24/7 AI-powered medical assistance.",
       whatWeDoTitle: "What We Do",
       whatWeDoText: "Medi Soul leverages cutting-edge AI trained on data from world-trusted medical sources including Drugs.com, NHS.uk, and WHO guidelines. Our AI has been trained on thousands of doctor-approved prescriptions and medical protocols to provide reliable health insights for common and basic medical conditions.",
       feature1: "Instant symptom analysis and health insights",
