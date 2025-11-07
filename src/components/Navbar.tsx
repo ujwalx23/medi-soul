@@ -82,7 +82,7 @@ export const Navbar = ({ language = "en", onLanguageChange, showLanguageSwitcher
           <Link to="/" className="flex items-center gap-2 group">
             <Activity className="h-8 w-8 text-primary animate-glow transition-transform group-hover:scale-110" />
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              MediAgent
+              MediSoul
             </span>
           </Link>
 
