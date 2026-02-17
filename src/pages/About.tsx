@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Heart, Users, Target, Award } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
 
   const translations = {
     en: {
@@ -108,7 +108,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">

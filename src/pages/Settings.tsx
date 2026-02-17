@@ -5,6 +5,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Bell, Globe, Moon, Shield, Volume2 } from "lucide-react";
 
 const Settings = () => {
@@ -12,7 +13,7 @@ const Settings = () => {
   const [notifications, setNotifications] = useState(true);
   const [soundEffects, setSoundEffects] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState("en");
+  const { language, setLanguage } = useLanguage();
 
   const handleSave = () => {
     toast({
@@ -44,7 +45,7 @@ const Settings = () => {
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="language" className="mb-2 block">Preferred Language</Label>
-                  <Select value={language} onValueChange={setLanguage}>
+                  <Select value={language} onValueChange={(val) => setLanguage(val as any)}>
                     <SelectTrigger id="language">
                       <SelectValue />
                     </SelectTrigger>

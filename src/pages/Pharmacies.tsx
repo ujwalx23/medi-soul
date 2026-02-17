@@ -6,6 +6,7 @@ import { MapPin, Navigation, Phone, Clock, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Pharmacy {
   name: string;
@@ -18,7 +19,7 @@ interface Pharmacy {
 }
 
 const Pharmacies = () => {
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [pharmacies, setPharmacies] = useState<Pharmacy[]>([]);
   const [loading, setLoading] = useState(false);
@@ -182,7 +183,7 @@ const Pharmacies = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">

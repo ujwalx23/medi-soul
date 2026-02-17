@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { MessageSquare } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import whatsappQR from "@/assets/whatsapp-qr.jpg";
 
 interface Message {
@@ -20,7 +21,7 @@ const Chat = () => {
   const { user, loading: authLoading, signOut } = useAuth();
   const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>([]);
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
 
   // Allow demo mode - don't redirect immediately
@@ -147,7 +148,7 @@ const Chat = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4 max-w-4xl mx-auto w-full">
         {!user && (

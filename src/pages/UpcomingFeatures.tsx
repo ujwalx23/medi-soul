@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Watch, Brain, Calendar, FileText, Camera, TrendingUp, Users, Shield, Video, Pill } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const UpcomingFeatures = () => {
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
 
   const translations = {
     en: {
@@ -118,7 +118,7 @@ const UpcomingFeatures = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">

@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactUs = () => {
   const { toast } = useToast();
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -188,7 +189,7 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto">

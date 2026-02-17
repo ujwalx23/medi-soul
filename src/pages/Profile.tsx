@@ -9,13 +9,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Save, User, Mail, Calendar, AlertCircle, Activity, FileText } from "lucide-react";
 
 const Profile = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [language, setLanguage] = useState("en");
+  const { language } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState({
     full_name: "",
@@ -226,7 +227,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar language={language} onLanguageChange={setLanguage} />
+      <Navbar />
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
