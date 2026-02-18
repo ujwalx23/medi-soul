@@ -18,6 +18,7 @@ import BasicHealthGuide from "./pages/BasicHealthGuide";
 import Settings from "./pages/Settings";
 import TrackRecords from "./pages/TrackRecords";
 import UpcomingFeatures from "./pages/UpcomingFeatures";
+import ImageAnalysis from "./pages/ImageAnalysis";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/health-monitoring" element={<HealthMonitoring />} />
             <Route path="/track-records" element={<TrackRecords />} />
             <Route path="/upcoming-features" element={<UpcomingFeatures />} />
+            <Route path="/image-analysis" element={<ImageAnalysis />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

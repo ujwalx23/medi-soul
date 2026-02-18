@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import whatsappQR from "@/assets/whatsapp-qr.jpg";
+import whatsappQR from "@/assets/whatsapp-qr.png";
 
 interface Message {
   text: string;
@@ -176,7 +176,7 @@ const Chat = () => {
             Our AI is trained on authoritative medical data from <strong className="text-foreground">Drugs.com</strong>, <strong className="text-foreground">NHS.uk</strong>, and <strong className="text-foreground">WHO</strong>. We've analyzed thousands of doctor-approved prescriptions to provide you with accurate health insights for basic medical conditions. This is tested, reliable data you can trust.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <div className="grid md:grid-cols-3 gap-4 mt-6">
             {/* Web Chat Option */}
             <div className="glass rounded-xl p-4 border border-primary/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
@@ -205,7 +205,7 @@ const Chat = () => {
                 Chat via WhatsApp
               </h4>
               <p className="text-xs text-muted-foreground mb-3">
-                Connect with our pre-tested AI assistant on WhatsApp
+                Connect with our AI assistant on WhatsApp
               </p>
               <div className="space-y-3">
                 <img 
@@ -214,10 +214,39 @@ const Chat = () => {
                   className="w-32 h-32 mx-auto rounded-lg"
                 />
                 <div className="text-xs space-y-2">
-                  <p><strong>Step 1:</strong> Scan QR code or click: <a href="https://api.whatsapp.com/send?phone=15817019840&text=MLBDH2" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Open WhatsApp</a></p>
-                  <p><strong>Step 2:</strong> Send linking code: <code className="bg-muted px-2 py-1 rounded">MLBDH2</code></p>
-                  <p><strong>Step 3:</strong> Type "Hi" to start chatting!</p>
+                  <p><strong>Step 1:</strong> Scan QR or <a href="https://api.whatsapp.com/send?phone=15817019840&text=MLBDH2" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Open WhatsApp</a></p>
+                  <p><strong>Step 2:</strong> Send code: <code className="bg-muted px-2 py-1 rounded">MLBDH2</code></p>
+                  <p><strong>Step 3:</strong> Type "Hi" to start!</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Telegram Option */}
+            <div className="glass rounded-xl p-4 border border-blue-500/20">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <MessageSquare className="h-5 w-5 text-blue-400" />
+                Chat via Telegram
+              </h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                Chat with our AI medical bot on Telegram
+              </p>
+              <div className="space-y-3">
+                <div className="w-32 h-32 mx-auto rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center border border-blue-500/30">
+                  <div className="text-center">
+                    <span className="text-3xl">✈️</span>
+                    <p className="text-xs text-blue-400 mt-1 font-semibold">Telegram</p>
+                  </div>
+                </div>
+                <a
+                  href="https://t.me/AIxmedicbot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block w-full"
+                >
+                  <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90">
+                    Open in Telegram
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

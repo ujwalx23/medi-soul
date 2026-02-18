@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail } from "lucide-react";
+import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -17,21 +17,25 @@ export const Navbar = () => {
     en: {
       home: "Home", chat: "Chat", about: "About", contact: "Contact",
       healthGuide: "Health Guide", pharmacies: "Pharmacies", trackRecords: "Track Records",
+      imageAnalysis: "Image Analysis",
       profile: "Profile", upcomingFeatures: "Upcoming Features", login: "Login", logout: "Logout",
     },
     hi: {
       home: "होम", chat: "चैट", about: "हमारे बारे में", contact: "संपर्क करें",
       healthGuide: "स्वास्थ्य गाइड", pharmacies: "फार्मेसी", trackRecords: "रिकॉर्ड ट्रैक करें",
+      imageAnalysis: "छवि विश्लेषण",
       profile: "प्रोफ़ाइल", upcomingFeatures: "आगामी सुविधाएं", login: "लॉगिन", logout: "लॉगआउट",
     },
     mr: {
       home: "मुख्यपृष्ठ", chat: "चॅट", about: "आमच्याबद्दल", contact: "संपर्क",
       healthGuide: "आरोग्य मार्गदर्शक", pharmacies: "फार्मसी", trackRecords: "रेकॉर्ड ट्रॅक करा",
+      imageAnalysis: "प्रतिमा विश्लेषण",
       profile: "प्रोफाइल", upcomingFeatures: "आगामी वैशिष्ट्ये", login: "लॉगिन", logout: "लॉगआउट",
     },
     es: {
       home: "Inicio", chat: "Chat", about: "Acerca de", contact: "Contacto",
       healthGuide: "Guía de Salud", pharmacies: "Farmacias", trackRecords: "Seguimiento",
+      imageAnalysis: "Análisis de Imagen",
       profile: "Perfil", upcomingFeatures: "Próximas Funciones", login: "Iniciar sesión", logout: "Cerrar sesión",
     },
   };
