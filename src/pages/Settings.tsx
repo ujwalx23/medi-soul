@@ -6,15 +6,14 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
-import { Bell, Globe, Moon, Shield, Volume2, Sun } from "lucide-react";
+import { Bell, Globe, Moon, Shield, Volume2 } from "lucide-react";
 
 const Settings = () => {
   const { toast } = useToast();
   const [notifications, setNotifications] = useState(true);
   const [soundEffects, setSoundEffects] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const { language, setLanguage } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   const handleSave = () => {
     toast({
@@ -55,8 +54,6 @@ const Settings = () => {
                       <SelectItem value="hi">हिंदी (Hindi)</SelectItem>
                       <SelectItem value="mr">मराठी (Marathi)</SelectItem>
                       <SelectItem value="es">Español (Spanish)</SelectItem>
-                      <SelectItem value="ur">اردو (Urdu)</SelectItem>
-                      <SelectItem value="fr">Français (French)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -71,10 +68,18 @@ const Settings = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="notifications" className="cursor-pointer">Enable Notifications</Label>
-                  <Switch id="notifications" checked={notifications} onCheckedChange={setNotifications} />
+                  <Label htmlFor="notifications" className="cursor-pointer">
+                    Enable Notifications
+                  </Label>
+                  <Switch 
+                    id="notifications"
+                    checked={notifications}
+                    onCheckedChange={setNotifications}
+                  />
                 </div>
-                <p className="text-sm text-muted-foreground">Receive alerts for health reminders and important updates</p>
+                <p className="text-sm text-muted-foreground">
+                  Receive alerts for health reminders and important updates
+                </p>
               </div>
             </div>
 
@@ -86,31 +91,41 @@ const Settings = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="sound" className="cursor-pointer">Sound Effects</Label>
-                  <Switch id="sound" checked={soundEffects} onCheckedChange={setSoundEffects} />
+                  <Label htmlFor="sound" className="cursor-pointer">
+                    Sound Effects
+                  </Label>
+                  <Switch 
+                    id="sound"
+                    checked={soundEffects}
+                    onCheckedChange={setSoundEffects}
+                  />
                 </div>
-                <p className="text-sm text-muted-foreground">Play sounds for messages and notifications</p>
+                <p className="text-sm text-muted-foreground">
+                  Play sounds for messages and notifications
+                </p>
               </div>
             </div>
 
             {/* Appearance Settings */}
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4">
-                {theme === "dark" ? <Moon className="h-6 w-6 text-primary" /> : <Sun className="h-6 w-6 text-primary" />}
+                <Moon className="h-6 w-6 text-primary" />
                 <h2 className="text-xl font-bold">Appearance</h2>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="darkmode" className="cursor-pointer">
-                    {theme === "dark" ? "Dark Mode" : "Light Mode"}
+                    Dark Mode
                   </Label>
                   <Switch 
                     id="darkmode"
-                    checked={theme === "dark"}
-                    onCheckedChange={toggleTheme}
+                    checked={darkMode}
+                    onCheckedChange={setDarkMode}
                   />
                 </div>
-                <p className="text-sm text-muted-foreground">Switch between light and dark themes</p>
+                <p className="text-sm text-muted-foreground">
+                  Switch between light and dark themes
+                </p>
               </div>
             </div>
 
@@ -124,11 +139,17 @@ const Settings = () => {
                 <p>• Your health data is encrypted and stored securely</p>
                 <p>• We never share your information without consent</p>
                 <p>• You can delete your account and data at any time</p>
-                <Button variant="outline" className="mt-4">Privacy Policy</Button>
+                <Button variant="outline" className="mt-4">
+                  Privacy Policy
+                </Button>
               </div>
             </div>
 
-            <Button onClick={handleSave} className="w-full bg-gradient-to-r from-primary to-accent" size="lg">
+            <Button 
+              onClick={handleSave}
+              className="w-full bg-gradient-to-r from-primary to-accent"
+              size="lg"
+            >
               Save Settings
             </Button>
           </div>
