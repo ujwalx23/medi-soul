@@ -12,6 +12,8 @@ const languages = [
   { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
   { code: "mr", name: "मराठी", flag: "🇮🇳" },
   { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "ur", name: "اردو", flag: "🇵🇰" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
 ];
 
 interface LanguageSwitcherProps {
@@ -25,18 +27,18 @@ export const LanguageSwitcher = ({ language, onLanguageChange }: LanguageSwitche
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="glass border-white/20 text-foreground hover:bg-white/10">
+        <Button variant="outline" size="sm" className="glass border-border/20 text-foreground hover:bg-accent/10">
           <Globe className="h-4 w-4 mr-2" />
           <span className="mr-1">{currentLang.flag}</span>
           {currentLang.name}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="glass border-white/20 bg-card/80">
+      <DropdownMenuContent className="glass border-border/20 bg-card/80">
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
             onClick={() => onLanguageChange(lang.code)}
-            className="cursor-pointer hover:bg-white/10"
+            className="cursor-pointer hover:bg-accent/10"
           >
             <span className="mr-2">{lang.flag}</span>
             {lang.name}

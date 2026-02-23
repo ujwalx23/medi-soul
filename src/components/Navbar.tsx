@@ -2,18 +2,20 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine } from "lucide-react";
+import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine, Sun, Moon } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const translations = {
+  const translations: Record<string, Record<string, string>> = {
     en: {
       home: "Home", chat: "Chat", about: "About", contact: "Contact",
       healthGuide: "Health Guide", pharmacies: "Pharmacies", trackRecords: "Track Records",
@@ -38,12 +40,24 @@ export const Navbar = () => {
       imageAnalysis: "Análisis de Imagen",
       profile: "Perfil", upcomingFeatures: "Próximas Funciones", login: "Iniciar sesión", logout: "Cerrar sesión",
     },
+    ur: {
+      home: "ہوم", chat: "چیٹ", about: "ہمارے بارے میں", contact: "رابطہ کریں",
+      healthGuide: "صحت گائیڈ", pharmacies: "فارمیسی", trackRecords: "ریکارڈ ٹریک کریں",
+      imageAnalysis: "تصویر تجزیہ",
+      profile: "پروفائل", upcomingFeatures: "آنے والی خصوصیات", login: "لاگ ان", logout: "لاگ آؤٹ",
+    },
+    fr: {
+      home: "Accueil", chat: "Chat", about: "À propos", contact: "Contact",
+      healthGuide: "Guide Santé", pharmacies: "Pharmacies", trackRecords: "Suivi",
+      imageAnalysis: "Analyse d'Image",
+      profile: "Profil", upcomingFeatures: "Fonctionnalités à venir", login: "Connexion", logout: "Déconnexion",
+    },
   };
 
-  const t = translations[language as keyof typeof translations] || translations.en;
+  const t = translations[language] || translations.en;
 
   return (
-    <nav className="sticky top-0 z-50 glass border-b border-white/10">
+    <nav className="sticky top-0 z-50 glass border-b border-border/10">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
@@ -54,31 +68,31 @@ export const Navbar = () => {
           </Link>
 
           <div className="hidden md:flex items-center gap-2">
-            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.home}</Link>
-            <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.about}</Link>
-            <Link to="/health-guide" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.healthGuide}</Link>
-            <Link to="/pharmacies" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.pharmacies}</Link>
-            <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.trackRecords}</Link>
-            <Link to="/image-analysis" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5 flex items-center gap-1"><ScanLine className="h-4 w-4" />{t.imageAnalysis}</Link>
+            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.home}</Link>
+            <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.about}</Link>
+            <Link to="/health-guide" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.healthGuide}</Link>
+            <Link to="/pharmacies" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.pharmacies}</Link>
+            <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.trackRecords}</Link>
+            <Link to="/image-analysis" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5 flex items-center gap-1"><ScanLine className="h-4 w-4" />{t.imageAnalysis}</Link>
             
             {user && (
               <TooltipProvider>
-                <div className="flex items-center gap-1 ml-2 border-l border-white/10 pl-2">
+                <div className="flex items-center gap-1 ml-2 border-l border-border/10 pl-2">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link to="/upcoming-features" className="p-2 hover:bg-white/10 rounded-lg transition-colors"><Sparkles className="h-5 w-5" /></Link>
+                      <Link to="/upcoming-features" className="p-2 hover:bg-accent/10 rounded-lg transition-colors"><Sparkles className="h-5 w-5" /></Link>
                     </TooltipTrigger>
                     <TooltipContent><p>{t.upcomingFeatures}</p></TooltipContent>
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link to="/contact" className="p-2 hover:bg-white/10 rounded-lg transition-colors"><Mail className="h-5 w-5" /></Link>
+                      <Link to="/contact" className="p-2 hover:bg-accent/10 rounded-lg transition-colors"><Mail className="h-5 w-5" /></Link>
                     </TooltipTrigger>
                     <TooltipContent><p>{t.contact}</p></TooltipContent>
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link to="/profile" className="p-2 hover:bg-white/10 rounded-lg transition-colors"><User className="h-5 w-5" /></Link>
+                      <Link to="/profile" className="p-2 hover:bg-accent/10 rounded-lg transition-colors"><User className="h-5 w-5" /></Link>
                     </TooltipTrigger>
                     <TooltipContent><p>{t.profile}</p></TooltipContent>
                   </Tooltip>
@@ -93,13 +107,22 @@ export const Navbar = () => {
             )}
 
             {!user && (
-              <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-white/5">{t.contact}</Link>
+              <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent/5">{t.contact}</Link>
             )}
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg glass border-border/20 hover:bg-accent/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
             
             <LanguageSwitcher language={language} onLanguageChange={(lang) => setLanguage(lang as any)} />
 
             {user ? (
-              <Button onClick={signOut} variant="outline" size="sm" className="glass border-white/20 ml-2">{t.logout}</Button>
+              <Button onClick={signOut} variant="outline" size="sm" className="glass border-border/20 ml-2">{t.logout}</Button>
             ) : (
               <Button onClick={() => navigate("/auth")} size="sm" className="bg-gradient-to-r from-primary to-accent ml-2">{t.login}</Button>
             )}
@@ -126,11 +149,18 @@ export const Navbar = () => {
                 <Link to="/chat" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.chat}</Link>
               </>
             )}
-            <div className="px-2 py-2">
+            <div className="px-2 py-2 flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg glass border-border/20 hover:bg-accent/10 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
               <LanguageSwitcher language={language} onLanguageChange={(lang) => setLanguage(lang as any)} />
             </div>
             {user ? (
-              <Button onClick={signOut} variant="outline" className="w-full glass border-white/20">{t.logout}</Button>
+              <Button onClick={signOut} variant="outline" className="w-full glass border-border/20">{t.logout}</Button>
             ) : (
               <Button onClick={() => { navigate("/auth"); setMobileMenuOpen(false); }} className="w-full bg-gradient-to-r from-primary to-accent">{t.login}</Button>
             )}

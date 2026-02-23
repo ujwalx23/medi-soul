@@ -39,11 +39,11 @@ const Chat = () => {
           {
             text: language === 'en' 
               ? "Hello! I'm MediAgent, your AI health assistant. You're using demo mode. Describe your symptoms and I'll help you understand what might be going on. Sign up to save your chat history!"
-              : language === 'hi'
-              ? "नमस्ते! मैं MediAgent हूं, आपका AI स्वास्थ्य सहायक। आप डेमो मोड उपयोग कर रहे हैं। अपने लक्षण बताएं और मैं आपको समझने में मदद करूंगा।"
-              : language === 'mr'
-              ? "नमस्कार! मी MediAgent आहे, तुमचा AI आरोग्य सहाय्यक। तुम्ही डेमो मोड वापरत आहात। तुमची लक्षणे सांगा आणि मी समजून घेण्यास मदत करेन।"
-              : "¡Hola! Soy MediAgent, tu asistente de salud AI. Estás usando el modo demo. Describe tus síntomas y te ayudaré.",
+              : language === 'hi' ? "नमस्ते! मैं MediAgent हूं, आपका AI स्वास्थ्य सहायक। आप डेमो मोड उपयोग कर रहे हैं।"
+              : language === 'mr' ? "नमस्कार! मी MediAgent आहे, तुमचा AI आरोग्य सहाय्यक। तुम्ही डेमो मोड वापरत आहात।"
+              : language === 'ur' ? "السلام علیکم! میں MediAgent ہوں، آپ کا AI صحت معاون۔ آپ ڈیمو موڈ استعمال کر رہے ہیں۔"
+              : language === 'fr' ? "Bonjour ! Je suis MediAgent, votre assistant santé IA. Vous utilisez le mode démo."
+              : "¡Hola! Soy MediAgent, tu asistente de salud AI. Estás usando el modo demo.",
             isUser: false,
           },
         ]);
@@ -73,11 +73,11 @@ const Chat = () => {
           {
             text: language === 'en' 
               ? "Hello! I'm MediAgent, your AI health assistant. Describe your symptoms and I'll help you understand what might be going on."
-              : language === 'hi'
-              ? "नमस्ते! मैं MediAgent हूं, आपका AI स्वास्थ्य सहायक। अपने लक्षण बताएं और मैं आपको समझने में मदद करूंगा।"
-              : language === 'mr'
-              ? "नमस्कार! मी MediAgent आहे, तुमचा AI आरोग्य सहाय्यक। तुमची लक्षणे सांगा आणि मी समजून घेण्यास मदत करेन।"
-              : "¡Hola! Soy MediAgent, tu asistente de salud AI. Describe tus síntomas y te ayudaré.",
+              : language === 'hi' ? "नमस्ते! मैं MediAgent हूं, आपका AI स्वास्थ्य सहायक।"
+              : language === 'mr' ? "नमस्कार! मी MediAgent आहे, तुमचा AI आरोग्य सहाय्यक।"
+              : language === 'ur' ? "السلام علیکم! میں MediAgent ہوں، آپ کا AI صحت معاون۔"
+              : language === 'fr' ? "Bonjour ! Je suis MediAgent, votre assistant santé IA."
+              : "¡Hola! Soy MediAgent, tu asistente de salud AI.",
             isUser: false,
           },
         ]);
@@ -254,7 +254,7 @@ const Chat = () => {
 
           <div className="glass rounded-2xl p-6 mb-4 border-2 border-muted">
           <h3 className="text-lg font-bold mb-3">
-            💬 {language === 'en' ? 'In-App General Chatbot' : language === 'hi' ? 'इन-ऐप सामान्य चैटबॉट' : language === 'mr' ? 'इन-अॅप सामान्य चॅटबॉट' : 'Chatbot General en la Aplicación'}
+            💬 {language === 'en' ? 'In-App General Chatbot' : language === 'hi' ? 'इन-ऐप सामान्य चैटबॉट' : language === 'mr' ? 'इन-अॅप सामान्य चॅटबॉट' : language === 'ur' ? 'ان-ایپ عمومی چیٹ بوٹ' : language === 'fr' ? 'Chatbot Général Intégré' : 'Chatbot General en la Aplicación'}
           </h3>
           <p className="text-sm text-muted-foreground mb-2">
             {language === 'en' 
