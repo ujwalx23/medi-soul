@@ -2,64 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
+  /* Dark mode (default) */
   :root {
-    /* Base glassmorphic theme */
     --background: 240 60% 8%;
     --foreground: 210 40% 98%;
 
-    /* Glass card effects */
     --card: 240 40% 12%;
     --card-foreground: 210 40% 98%;
 
     --popover: 240 40% 15%;
     --popover-foreground: 210 40% 98%;
 
-    /* Medical blue primary */
     --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
     --primary-glow: 217 91% 70%;
 
-    /* Healing green secondary */
     --secondary: 160 84% 39%;
     --secondary-foreground: 210 40% 98%;
     --secondary-glow: 160 84% 50%;
 
-    /* Muted glass tones */
     --muted: 240 20% 20%;
     --muted-foreground: 215 20% 70%;
 
-    /* Accent neon cyan */
     --accent: 189 94% 43%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    /* Glass borders and inputs */
     --border: 240 20% 25%;
     --input: 240 20% 18%;
     --ring: 217 91% 60%;
 
     --radius: 1rem;
 
-    /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(189 94% 43%));
     --gradient-secondary: linear-gradient(135deg, hsl(160 84% 39%), hsl(189 94% 43%));
     --gradient-bg: linear-gradient(180deg, hsl(240 60% 8%), hsl(260 50% 12%));
     
-    /* Glass effects */
     --glass-bg: hsla(240, 40%, 15%, 0.6);
     --glass-border: hsla(210, 40%, 98%, 0.15);
     
-    /* Shadows and glows */
     --shadow-glow-primary: 0 0 40px hsla(217, 91%, 60%, 0.4);
     --shadow-glow-secondary: 0 0 40px hsla(160, 84%, 39%, 0.4);
     --shadow-glass: 0 8px 32px hsla(0, 0%, 0%, 0.3);
+  }
+
+  /* Light mode */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 240 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 60%;
+
+    --secondary: 160 84% 32%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 160 84% 42%;
+
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 189 94% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 85%;
+    --input: 220 13% 90%;
+    --ring: 217 91% 50%;
+
+    --glass-bg: hsla(220, 20%, 96%, 0.8);
+    --glass-border: hsla(220, 13%, 70%, 0.3);
+
+    --shadow-glow-primary: 0 0 40px hsla(217, 91%, 50%, 0.2);
+    --shadow-glow-secondary: 0 0 40px hsla(160, 84%, 32%, 0.2);
+    --shadow-glass: 0 8px 32px hsla(220, 20%, 50%, 0.1);
   }
 }
 
@@ -75,7 +102,11 @@ All colors MUST be HSL.
     min-height: 100vh;
   }
 
-  /* Glassmorphic utilities */
+  .light body,
+  .light {
+    background: linear-gradient(180deg, hsl(210 40% 98%), hsl(220 30% 94%));
+  }
+
   .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -91,23 +122,14 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-glow-secondary);
   }
 
-  /* Animations */
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
 
   .animate-float {
