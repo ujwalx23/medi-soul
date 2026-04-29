@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,9 +6,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Users, Loader2, AlertTriangle, ShieldCheck, Activity, Dna } from "lucide-react";
+import { Users, Loader2, AlertTriangle, ShieldCheck, Activity, Dna, History as HistoryIcon, Trash2 } from "lucide-react";
 
 const T = {
   en: {
@@ -68,11 +69,25 @@ interface Result {
 
 const FamilyHistory = () => {
   const { language } = useLanguage();
+  const { user } = useAuth();
   const t = T[language as keyof typeof T] || T.en;
 
   const [history, setHistory] = useState({ father: "", mother: "", grandparents: "", siblings: "", other: "" });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
+  const [saved, setSaved] = useState<any[]>([]);
+
+  const loadSaved = async () => {
+    if (!user) return;
+    const { data } = await supabase
+      .from("family_history" as any)
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(10);
+    setSaved((data as any) || []);
+  };
+
+  useEffect(() => { loadSaved(); }, [user]);
 
   const handleAnalyze = async () => {
     if (!Object.values(history).some((v) => v.trim())) {
@@ -88,11 +103,41 @@ const FamilyHistory = () => {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
       setResult(data);
+
+      // Persist to DB if logged in
+      if (user) {
+        const { error: insErr } = await supabase.from("family_history" as any).insert({
+          user_id: user.id,
+          father: history.father || null,
+          mother: history.mother || null,
+          grandparents: history.grandparents || null,
+          siblings: history.siblings || null,
+          other_relatives: history.other || null,
+          analysis_result: data,
+          overall_risk: data?.overallRisk || null,
+        });
+        if (insErr) {
+          console.error(insErr);
+          toast.error("Saved locally — couldn't save to your account.");
+        } else {
+          toast.success("Saved to your records");
+          loadSaved();
+        }
+      } else {
+        toast.message("Sign in to save your family history.");
+      }
     } catch (e: any) {
       toast.error(e.message || "Failed to analyze");
     } finally {
       setLoading(false);
     }
+  };
+
+  const deleteEntry = async (id: string) => {
+    const { error } = await supabase.from("family_history" as any).delete().eq("id", id);
+    if (error) return toast.error("Could not delete");
+    toast.success("Deleted");
+    loadSaved();
   };
 
   const riskBadge = (level: RiskLevel) => {
@@ -181,6 +226,36 @@ const FamilyHistory = () => {
               <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-sm">
                 ⚠️ {result.disclaimer || t.disclaimer}
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {user && saved.length > 0 && (
+          <Card className="glass border-border/30 mt-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <HistoryIcon className="h-5 w-5 text-primary" /> Saved Family History
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {saved.map((s) => (
+                <div key={s.id} className="p-3 rounded-lg border border-border/30 bg-muted/20">
+                  <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(s.created_at).toLocaleString()}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      {s.overall_risk && riskBadge(s.overall_risk)}
+                      <Button size="icon" variant="ghost" onClick={() => deleteEntry(s.id)}>
+                        <Trash2 className="h-4 w-4 text-destructive" />
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {s.analysis_result?.summary || "—"}
+                  </p>
+                </div>
+              ))}
             </CardContent>
           </Card>
         )}
