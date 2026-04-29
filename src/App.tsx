@@ -52,6 +52,8 @@ const App = () => (
             <Route path="/upcoming-features" element={<UpcomingFeatures />} />
             <Route path="/image-analysis" element={<ImageAnalysis />} />
             <Route path="/family-history" element={<FamilyHistory />} />
+            <Route path="/family-profiles" element={<FamilyProfiles />} />
+            <Route path="/insurance" element={<Insurance />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
