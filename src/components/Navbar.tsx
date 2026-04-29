@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine, Sun, Moon, Users } from "lucide-react";
+import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine, Sun, Moon, Users, Shield, UsersRound } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
