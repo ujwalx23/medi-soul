@@ -69,11 +69,25 @@ interface Result {
 
 const FamilyHistory = () => {
   const { language } = useLanguage();
+  const { user } = useAuth();
   const t = T[language as keyof typeof T] || T.en;
 
   const [history, setHistory] = useState({ father: "", mother: "", grandparents: "", siblings: "", other: "" });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
+  const [saved, setSaved] = useState<any[]>([]);
+
+  const loadSaved = async () => {
+    if (!user) return;
+    const { data } = await supabase
+      .from("family_history" as any)
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(10);
+    setSaved((data as any) || []);
+  };
+
+  useEffect(() => { loadSaved(); }, [user]);
 
   const handleAnalyze = async () => {
     if (!Object.values(history).some((v) => v.trim())) {
@@ -89,11 +103,41 @@ const FamilyHistory = () => {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
       setResult(data);
+
+      // Persist to DB if logged in
+      if (user) {
+        const { error: insErr } = await supabase.from("family_history" as any).insert({
+          user_id: user.id,
+          father: history.father || null,
+          mother: history.mother || null,
+          grandparents: history.grandparents || null,
+          siblings: history.siblings || null,
+          other_relatives: history.other || null,
+          analysis_result: data,
+          overall_risk: data?.overallRisk || null,
+        });
+        if (insErr) {
+          console.error(insErr);
+          toast.error("Saved locally — couldn't save to your account.");
+        } else {
+          toast.success("Saved to your records");
+          loadSaved();
+        }
+      } else {
+        toast.message("Sign in to save your family history.");
+      }
     } catch (e: any) {
       toast.error(e.message || "Failed to analyze");
     } finally {
       setLoading(false);
     }
+  };
+
+  const deleteEntry = async (id: string) => {
+    const { error } = await supabase.from("family_history" as any).delete().eq("id", id);
+    if (error) return toast.error("Could not delete");
+    toast.success("Deleted");
+    loadSaved();
   };
 
   const riskBadge = (level: RiskLevel) => {
