@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-import { Upload, Image as ImageIcon, Loader2, X, Scan, FileText, Eye, Pill } from "lucide-react";
+import { Upload, Image as ImageIcon, Loader2, X, Scan, FileText, Eye, Pill, Stethoscope } from "lucide-react";
 
 const translations = {
   en: {
