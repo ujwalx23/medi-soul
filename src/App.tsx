@@ -21,6 +21,8 @@ import TrackRecords from "./pages/TrackRecords";
 import UpcomingFeatures from "./pages/UpcomingFeatures";
 import ImageAnalysis from "./pages/ImageAnalysis";
 import FamilyHistory from "./pages/FamilyHistory";
+import FamilyProfiles from "./pages/FamilyProfiles";
+import Insurance from "./pages/Insurance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
