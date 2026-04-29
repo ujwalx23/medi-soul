@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine, Sun, Moon } from "lucide-react";
+import { Activity, Menu, X, User, MessageSquare, Sparkles, Mail, ScanLine, Sun, Moon, Users } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -19,25 +19,25 @@ export const Navbar = () => {
     en: {
       home: "Home", chat: "Chat", about: "About", contact: "Contact",
       healthGuide: "Health Guide", pharmacies: "Pharmacies", trackRecords: "Track Records",
-      imageAnalysis: "Image Analysis",
+      imageAnalysis: "Image Analysis", familyHistory: "Family History",
       profile: "Profile", upcomingFeatures: "Upcoming Features", login: "Login", logout: "Logout",
     },
     hi: {
       home: "होम", chat: "चैट", about: "हमारे बारे में", contact: "संपर्क करें",
       healthGuide: "स्वास्थ्य गाइड", pharmacies: "फार्मेसी", trackRecords: "रिकॉर्ड ट्रैक करें",
-      imageAnalysis: "छवि विश्लेषण",
+      imageAnalysis: "छवि विश्लेषण", familyHistory: "पारिवारिक इतिहास",
       profile: "प्रोफ़ाइल", upcomingFeatures: "आगामी सुविधाएं", login: "लॉगिन", logout: "लॉगआउट",
     },
     mr: {
       home: "मुख्यपृष्ठ", chat: "चॅट", about: "आमच्याबद्दल", contact: "संपर्क",
       healthGuide: "आरोग्य मार्गदर्शक", pharmacies: "फार्मसी", trackRecords: "रेकॉर्ड ट्रॅक करा",
-      imageAnalysis: "प्रतिमा विश्लेषण",
+      imageAnalysis: "प्रतिमा विश्लेषण", familyHistory: "कौटुंबिक इतिहास",
       profile: "प्रोफाइल", upcomingFeatures: "आगामी वैशिष्ट्ये", login: "लॉगिन", logout: "लॉगआउट",
     },
     es: {
       home: "Inicio", chat: "Chat", about: "Acerca de", contact: "Contacto",
       healthGuide: "Guía de Salud", pharmacies: "Farmacias", trackRecords: "Seguimiento",
-      imageAnalysis: "Análisis de Imagen",
+      imageAnalysis: "Análisis de Imagen", familyHistory: "Historia Familiar",
       profile: "Perfil", upcomingFeatures: "Próximas Funciones", login: "Iniciar sesión", logout: "Cerrar sesión",
     },
   };
@@ -62,6 +62,7 @@ export const Navbar = () => {
             <Link to="/pharmacies" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50">{t.pharmacies}</Link>
             <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50">{t.trackRecords}</Link>
             <Link to="/image-analysis" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><ScanLine className="h-4 w-4" />{t.imageAnalysis}</Link>
+            <Link to="/family-history" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><Users className="h-4 w-4" />{t.familyHistory}</Link>
             
             {user && (
               <TooltipProvider>
@@ -138,6 +139,7 @@ export const Navbar = () => {
             <Link to="/pharmacies" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.pharmacies}</Link>
             <Link to="/track-records" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.trackRecords}</Link>
             <Link to="/image-analysis" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.imageAnalysis}</Link>
+            <Link to="/family-history" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyHistory}</Link>
             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.contact}</Link>
             {user && (
               <>
