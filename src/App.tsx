@@ -20,6 +20,7 @@ import Settings from "./pages/Settings";
 import TrackRecords from "./pages/TrackRecords";
 import UpcomingFeatures from "./pages/UpcomingFeatures";
 import ImageAnalysis from "./pages/ImageAnalysis";
+import FamilyHistory from "./pages/FamilyHistory";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/track-records" element={<TrackRecords />} />
             <Route path="/upcoming-features" element={<UpcomingFeatures />} />
             <Route path="/image-analysis" element={<ImageAnalysis />} />
+            <Route path="/family-history" element={<FamilyHistory />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
