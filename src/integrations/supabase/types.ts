@@ -96,6 +96,48 @@ export type Database = {
           },
         ]
       }
+      family_history: {
+        Row: {
+          analysis_result: Json | null
+          created_at: string
+          father: string | null
+          grandparents: string | null
+          id: string
+          mother: string | null
+          other_relatives: string | null
+          overall_risk: string | null
+          siblings: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          analysis_result?: Json | null
+          created_at?: string
+          father?: string | null
+          grandparents?: string | null
+          id?: string
+          mother?: string | null
+          other_relatives?: string | null
+          overall_risk?: string | null
+          siblings?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          analysis_result?: Json | null
+          created_at?: string
+          father?: string | null
+          grandparents?: string | null
+          id?: string
+          mother?: string | null
+          other_relatives?: string | null
+          overall_risk?: string | null
+          siblings?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       medical_records: {
         Row: {
           created_at: string | null
