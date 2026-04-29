@@ -156,13 +156,9 @@ For EACH medicine, list:
 
 If something is unclear or unreadable, say "Unclear — please confirm with your doctor or pharmacist." Never invent medicine names. End with: "⚠️ Always verify with your pharmacist before taking any medicine."`;
 
-      const generalPrompt = systemPrompt || `You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand ${langName}. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. If it's a medicine package, explain the medicine details. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.`;
+      const generalPrompt = `You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand ${langName}. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. If it's a medicine package, explain the medicine details. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.`;
 
       const finalPrompt = mode === "prescription" ? prescriptionPrompt : generalPrompt;
-
-      const LOVABLE_API_KEY = import.meta.env.VITE_SUPABASE_URL
-        ? undefined
-        : undefined;
 
       // Use edge function for image analysis
       const { data, error } = await supabase.functions.invoke('analyze-medical-image', {
@@ -170,7 +166,7 @@ If something is unclear or unreadable, say "Unclear — please confirm with your
           image: base64,
           mimeType,
           language,
-          systemPrompt,
+          systemPrompt: finalPrompt,
         },
       });
 
