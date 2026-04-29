@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
-import { Upload, Image as ImageIcon, Loader2, X, Scan, FileText, Eye, Pill } from "lucide-react";
+import { Upload, Image as ImageIcon, Loader2, X, Scan, FileText, Eye, Pill, Stethoscope } from "lucide-react";
 
 const translations = {
   en: {
@@ -94,6 +94,7 @@ const ImageAnalysis = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<string | null>(null);
+  const [mode, setMode] = useState<"general" | "prescription">("general");
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -129,17 +130,35 @@ const ImageAnalysis = () => {
       const base64 = selectedImage.split(",")[1];
       const mimeType = selectedFile.type || "image/jpeg";
 
-      const systemPrompt = language === 'hi'
-        ? "आप एक AI मेडिकल असिस्टेंट हैं। दी गई छवि का विश्लेषण करें और सरल, समझने योग्य हिंदी में समझाएं। यदि यह एक प्रिस्क्रिप्शन है, तो दवाइयों और निर्देशों को समझाएं। यदि यह एक X-रे या स्कैन है, तो जो दिखता है उसे समझाएं। यदि यह एक त्वचा की स्थिति है, तो संभावित कारणों का सुझाव दें। हमेशा डॉक्टर से परामर्श करने की सलाह दें।"
-        : language === 'mr'
-        ? "तुम्ही एक AI वैद्यकीय सहाय्यक आहात. दिलेल्या प्रतिमेचे विश्लेषण करा आणि सोप्या, समजण्यायोग्य मराठीत समजावा. जर हे प्रिस्क्रिप्शन असेल, तर औषधे आणि सूचना समजावा. जर हे X-रे किंवा स्कॅन असेल, तर जे दिसते ते समजावा. डॉक्टरांशी सल्लामसलत करण्याचा नेहमी सल्ला द्या."
-        : language === 'es'
-        ? "Eres un asistente médico de IA. Analiza la imagen proporcionada y explícala en español simple y comprensible. Si es una receta, explica los medicamentos e instrucciones. Si es un rayos X o escáner, explica lo que se ve. Si es una condición de piel, sugiere posibles causas. Siempre recomienda consultar a un médico."
-        : "You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand English. If it's a prescription, explain the medicines and instructions. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. If it's a medicine package, explain the medicine details. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.";
+      const langName = language === 'hi' ? 'Hindi' : language === 'mr' ? 'Marathi' : language === 'es' ? 'Spanish' : 'English';
 
-      const LOVABLE_API_KEY = import.meta.env.VITE_SUPABASE_URL
-        ? undefined
-        : undefined;
+      const prescriptionPrompt = `You are an expert medical AI specializing in reading doctor's prescriptions, including handwritten ones. Carefully OCR and analyze the prescription image. Reply ONLY in ${langName}.
+
+Structure your response in clean markdown with these sections:
+
+**👨‍⚕️ Doctor / Clinic** (if visible)
+**📅 Date** (if visible)
+**🧑 Patient Info** (name/age if visible)
+
+**💊 Medicines Prescribed**
+For EACH medicine, list:
+- **Name** (read carefully, even if handwritten — e.g. "Paracetamol 500mg")
+- **Dosage**: how much (e.g. 1 tablet)
+- **Frequency**: how often (e.g. 3 times a day, decode 1-0-1, BD, TDS, QID, SOS, HS)
+- **Duration**: how many days
+- **When to take**: before/after food, morning/night
+- **Purpose** in simple words (e.g. "for fever and pain")
+
+**🧪 Tests Advised** (if any)
+**📝 Doctor's Instructions / Advice**
+**⚠️ Precautions & Side Effects to Watch**
+**🔁 Follow-up** (if mentioned)
+
+If something is unclear or unreadable, say "Unclear — please confirm with your doctor or pharmacist." Never invent medicine names. End with: "⚠️ Always verify with your pharmacist before taking any medicine."`;
+
+      const generalPrompt = `You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand ${langName}. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. If it's a medicine package, explain the medicine details. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.`;
+
+      const finalPrompt = mode === "prescription" ? prescriptionPrompt : generalPrompt;
 
       // Use edge function for image analysis
       const { data, error } = await supabase.functions.invoke('analyze-medical-image', {
@@ -147,7 +166,7 @@ const ImageAnalysis = () => {
           image: base64,
           mimeType,
           language,
-          systemPrompt,
+          systemPrompt: finalPrompt,
         },
       });
 
@@ -185,6 +204,22 @@ const ImageAnalysis = () => {
             {t.title}
           </h1>
           <p className="text-muted-foreground text-sm md:text-base">{t.subtitle}</p>
+        </div>
+
+        {/* Mode toggle */}
+        <div className="glass rounded-2xl p-2 mb-4 grid grid-cols-2 gap-2">
+          <button
+            onClick={() => setMode("general")}
+            className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "general" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
+          >
+            <ImageIcon className="h-4 w-4" /> General
+          </button>
+          <button
+            onClick={() => setMode("prescription")}
+            className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "prescription" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
+          >
+            <Stethoscope className="h-4 w-4" /> Prescription Reader
+          </button>
         </div>
 
         {/* Examples */}

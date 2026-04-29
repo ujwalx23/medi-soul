@@ -21,6 +21,8 @@ import TrackRecords from "./pages/TrackRecords";
 import UpcomingFeatures from "./pages/UpcomingFeatures";
 import ImageAnalysis from "./pages/ImageAnalysis";
 import FamilyHistory from "./pages/FamilyHistory";
+import FamilyProfiles from "./pages/FamilyProfiles";
+import Insurance from "./pages/Insurance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,8 @@ const App = () => (
             <Route path="/upcoming-features" element={<UpcomingFeatures />} />
             <Route path="/image-analysis" element={<ImageAnalysis />} />
             <Route path="/family-history" element={<FamilyHistory />} />
+            <Route path="/family-profiles" element={<FamilyProfiles />} />
+            <Route path="/insurance" element={<Insurance />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

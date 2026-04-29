@@ -96,6 +96,39 @@ export type Database = {
           },
         ]
       }
+      emergency_contacts: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          is_primary: boolean
+          name: string
+          phone: string
+          relationship: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean
+          name: string
+          phone: string
+          relationship?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_primary?: boolean
+          name?: string
+          phone?: string
+          relationship?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       family_history: {
         Row: {
           analysis_result: Json | null
@@ -133,6 +166,54 @@ export type Database = {
           other_relatives?: string | null
           overall_risk?: string | null
           siblings?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      family_members: {
+        Row: {
+          age: number | null
+          allergies: string | null
+          blood_group: string | null
+          conditions: string | null
+          created_at: string
+          full_name: string
+          gender: string | null
+          id: string
+          medications: string | null
+          notes: string | null
+          relationship: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age?: number | null
+          allergies?: string | null
+          blood_group?: string | null
+          conditions?: string | null
+          created_at?: string
+          full_name: string
+          gender?: string | null
+          id?: string
+          medications?: string | null
+          notes?: string | null
+          relationship: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age?: number | null
+          allergies?: string | null
+          blood_group?: string | null
+          conditions?: string | null
+          created_at?: string
+          full_name?: string
+          gender?: string | null
+          id?: string
+          medications?: string | null
+          notes?: string | null
+          relationship?: string
           updated_at?: string
           user_id?: string
         }

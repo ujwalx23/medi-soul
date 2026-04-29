@@ -45,74 +45,32 @@ const UpcomingFeatures = () => {
   const t = translations[language as keyof typeof translations];
   const upcomingFeatures = [
     {
-      icon: Watch,
-      title: "Smart Health Monitoring",
-      description: "Real-time health tracking with wearable device integration including smartwatches, fitness trackers, and health monitoring devices.",
-      features: ["Heart Rate Monitoring", "Sleep Pattern Analysis", "Blood Oxygen Tracking", "Activity Metrics"],
-      eta: "Q2 2025"
-    },
-    {
       icon: Brain,
       title: "Advanced AI Diagnostics",
       description: "Enhanced AI algorithms for more accurate symptom analysis and disease prediction with machine learning capabilities.",
       features: ["Predictive Health Analytics", "Pattern Recognition", "Risk Assessment", "Personalized Insights"],
-      eta: "Q3 2025"
+      eta: "Q3 2026"
     },
     {
       icon: Video,
       title: "Telemedicine Integration",
       description: "Direct video consultations with healthcare professionals and specialists through our platform.",
       features: ["Video Consultations", "Screen Sharing", "Prescription Management", "Follow-up Scheduling"],
-      eta: "Q3 2025"
-    },
-    {
-      icon: FileText,
-      title: "Digital Health Records",
-      description: "Comprehensive electronic health record system with secure cloud storage and easy sharing with healthcare providers.",
-      features: ["Medical History", "Lab Results", "Imaging Reports", "Vaccination Records"],
-      eta: "Q2 2025"
-    },
-    {
-      icon: Camera,
-      title: "Visual Symptom Analysis",
-      description: "AI-powered image analysis for skin conditions, rashes, and visible symptoms using your device camera.",
-      features: ["Skin Condition Detection", "Wound Tracking", "Mole Analysis", "Visual Diagnostics"],
-      eta: "Q4 2025"
-    },
-    {
-      icon: Pill,
-      title: "Medication Management",
-      description: "Smart medication reminders, drug interaction checks, and refill notifications.",
-      features: ["Medication Reminders", "Drug Interactions", "Refill Alerts", "Dosage Tracking"],
-      eta: "Q2 2025"
+      eta: "Q4 2026"
     },
     {
       icon: TrendingUp,
       title: "Health Trends Dashboard",
       description: "Comprehensive visualization of your health metrics over time with predictive analytics.",
       features: ["Interactive Charts", "Trend Analysis", "Health Score", "Goal Tracking"],
-      eta: "Q3 2025"
-    },
-    {
-      icon: Users,
-      title: "Family Health Profiles",
-      description: "Manage health information for multiple family members from a single account.",
-      features: ["Multiple Profiles", "Shared Access", "Family History", "Emergency Contacts"],
-      eta: "Q4 2025"
-    },
-    {
-      icon: Shield,
-      title: "Insurance Integration",
-      description: "Direct integration with health insurance providers for claims and coverage information.",
-      features: ["Coverage Verification", "Claim Submission", "Cost Estimates", "Provider Network"],
-      eta: "Q4 2025"
+      eta: "Q3 2026"
     },
     {
       icon: Calendar,
       title: "Appointment Booking System",
       description: "Book appointments with specialists, clinics, and diagnostic centers directly through the app.",
       features: ["Specialist Booking", "Lab Tests", "Diagnostic Centers", "Automated Reminders"],
-      eta: "Q1 2026"
+      eta: "Q1 2027"
     }
   ];
 
