@@ -67,6 +67,8 @@ export const Navbar = () => {
             <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50">{t.trackRecords}</Link>
             <Link to="/image-analysis" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><ScanLine className="h-4 w-4" />{t.imageAnalysis}</Link>
             <Link to="/family-history" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><Users className="h-4 w-4" />{t.familyHistory}</Link>
+            <Link to="/family-profiles" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><UsersRound className="h-4 w-4" />{t.familyProfiles}</Link>
+            <Link to="/insurance" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><Shield className="h-4 w-4" />{t.insurance}</Link>
             
             {user && (
               <TooltipProvider>
