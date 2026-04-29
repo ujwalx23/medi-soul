@@ -229,6 +229,36 @@ const FamilyHistory = () => {
             </CardContent>
           </Card>
         )}
+
+        {user && saved.length > 0 && (
+          <Card className="glass border-border/30 mt-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <HistoryIcon className="h-5 w-5 text-primary" /> Saved Family History
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {saved.map((s) => (
+                <div key={s.id} className="p-3 rounded-lg border border-border/30 bg-muted/20">
+                  <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(s.created_at).toLocaleString()}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      {s.overall_risk && riskBadge(s.overall_risk)}
+                      <Button size="icon" variant="ghost" onClick={() => deleteEntry(s.id)}>
+                        <Trash2 className="h-4 w-4 text-destructive" />
+                      </Button>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {s.analysis_result?.summary || "—"}
+                  </p>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
