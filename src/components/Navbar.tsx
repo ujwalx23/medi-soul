@@ -146,6 +146,8 @@ export const Navbar = () => {
             <Link to="/track-records" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.trackRecords}</Link>
             <Link to="/image-analysis" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.imageAnalysis}</Link>
             <Link to="/family-history" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyHistory}</Link>
+            <Link to="/family-profiles" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyProfiles}</Link>
+            <Link to="/insurance" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.insurance}</Link>
             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.contact}</Link>
             {user && (
               <>
