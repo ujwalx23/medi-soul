@@ -206,6 +206,22 @@ If something is unclear or unreadable, say "Unclear — please confirm with your
           <p className="text-muted-foreground text-sm md:text-base">{t.subtitle}</p>
         </div>
 
+        {/* Mode toggle */}
+        <div className="glass rounded-2xl p-2 mb-4 grid grid-cols-2 gap-2">
+          <button
+            onClick={() => setMode("general")}
+            className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "general" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
+          >
+            <ImageIcon className="h-4 w-4" /> General
+          </button>
+          <button
+            onClick={() => setMode("prescription")}
+            className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "prescription" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
+          >
+            <Stethoscope className="h-4 w-4" /> Prescription Reader
+          </button>
+        </div>
+
         {/* Examples */}
         <div className="glass rounded-2xl p-4 mb-6">
           <p className="text-sm font-semibold mb-3 text-primary">{t.examples}</p>
