@@ -20,24 +20,28 @@ export const Navbar = () => {
       home: "Home", chat: "Chat", about: "About", contact: "Contact",
       healthGuide: "Health Guide", pharmacies: "Pharmacies", trackRecords: "Track Records",
       imageAnalysis: "Image Analysis", familyHistory: "Family History",
+      familyProfiles: "Family Profiles", insurance: "Insurance",
       profile: "Profile", upcomingFeatures: "Upcoming Features", login: "Login", logout: "Logout",
     },
     hi: {
       home: "होम", chat: "चैट", about: "हमारे बारे में", contact: "संपर्क करें",
       healthGuide: "स्वास्थ्य गाइड", pharmacies: "फार्मेसी", trackRecords: "रिकॉर्ड ट्रैक करें",
       imageAnalysis: "छवि विश्लेषण", familyHistory: "पारिवारिक इतिहास",
+      familyProfiles: "परिवार प्रोफाइल", insurance: "बीमा",
       profile: "प्रोफ़ाइल", upcomingFeatures: "आगामी सुविधाएं", login: "लॉगिन", logout: "लॉगआउट",
     },
     mr: {
       home: "मुख्यपृष्ठ", chat: "चॅट", about: "आमच्याबद्दल", contact: "संपर्क",
       healthGuide: "आरोग्य मार्गदर्शक", pharmacies: "फार्मसी", trackRecords: "रेकॉर्ड ट्रॅक करा",
       imageAnalysis: "प्रतिमा विश्लेषण", familyHistory: "कौटुंबिक इतिहास",
+      familyProfiles: "कुटुंब प्रोफाइल", insurance: "विमा",
       profile: "प्रोफाइल", upcomingFeatures: "आगामी वैशिष्ट्ये", login: "लॉगिन", logout: "लॉगआउट",
     },
     es: {
       home: "Inicio", chat: "Chat", about: "Acerca de", contact: "Contacto",
       healthGuide: "Guía de Salud", pharmacies: "Farmacias", trackRecords: "Seguimiento",
       imageAnalysis: "Análisis de Imagen", familyHistory: "Historia Familiar",
+      familyProfiles: "Perfiles Familiares", insurance: "Seguros",
       profile: "Perfil", upcomingFeatures: "Próximas Funciones", login: "Iniciar sesión", logout: "Cerrar sesión",
     },
   };
