@@ -260,8 +260,3 @@ const Chat = () => {
 
 export default Chat;
 
-    </div>
-  );
-};
-
-export default Chat;
