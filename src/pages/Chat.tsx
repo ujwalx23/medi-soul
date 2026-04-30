@@ -214,8 +214,8 @@ const Chat = () => {
                   className="w-32 h-32 mx-auto rounded-lg"
                 />
                 <div className="text-xs space-y-2">
-                  <p><strong>Step 1:</strong> Scan QR or <a href="https://api.whatsapp.com/send?phone=15817019840&text=MLBDH2" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Open WhatsApp</a></p>
-                  <p><strong>Step 2:</strong> Send code: <code className="bg-muted px-2 py-1 rounded">MLBDH2</code></p>
+                  <p><strong>Step 1:</strong> Scan QR or <a href="https://api.whatsapp.com/send?phone=15817019840&text=DLJG5H" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Open WhatsApp</a></p>
+                  <p><strong>Step 2:</strong> Send code: <code className="bg-muted px-2 py-1 rounded">DLJG5H</code></p>
                   <p><strong>Step 3:</strong> Type "Hi" to start!</p>
                 </div>
               </div>
@@ -224,18 +224,19 @@ const Chat = () => {
             {/* Telegram Option */}
             <div className="glass rounded-xl p-4 border border-blue-500/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <MessageSquare className="h-5 w-5 text-blue-400" />
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" style={{ color: "#229ED9" }}>
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.566-4.458c.538-.196 1.006.128.832.939z"/>
+                </svg>
                 Chat via Telegram
               </h4>
               <p className="text-xs text-muted-foreground mb-3">
                 Chat with our AI medical bot on Telegram
               </p>
               <div className="space-y-3">
-                <div className="w-32 h-32 mx-auto rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center border border-blue-500/30">
-                  <div className="text-center">
-                    <span className="text-3xl">✈️</span>
-                    <p className="text-xs text-blue-400 mt-1 font-semibold">Telegram</p>
-                  </div>
+                <div className="w-32 h-32 mx-auto rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-600/20 flex items-center justify-center border border-blue-500/30">
+                  <svg className="h-20 w-20" viewBox="0 0 24 24" fill="currentColor" style={{ color: "#229ED9" }}>
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.566-4.458c.538-.196 1.006.128.832.939z"/>
+                  </svg>
                 </div>
                 <a
                   href="https://t.me/AIxmedicbot"
@@ -243,7 +244,7 @@ const Chat = () => {
                   rel="noopener noreferrer"
                   className="inline-block w-full"
                 >
-                  <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90">
+                  <Button className="w-full hover:opacity-90" style={{ background: "linear-gradient(to right, #229ED9, #1a7eb0)" }}>
                     Open in Telegram
                   </Button>
                 </a>
@@ -252,46 +253,10 @@ const Chat = () => {
           </div>
         </div>
 
-          <div className="glass rounded-2xl p-6 mb-4 border-2 border-muted">
-          <h3 className="text-lg font-bold mb-3">
-            💬 {language === 'en' ? 'In-App General Chatbot' : language === 'hi' ? 'इन-ऐप सामान्य चैटबॉट' : language === 'mr' ? 'इन-अॅप सामान्य चॅटबॉट' : 'Chatbot General en la Aplicación'}
-          </h3>
-          <p className="text-sm text-muted-foreground mb-2">
-            {language === 'en' 
-              ? "This is a general chatbot that can help you in any language with various topics."
-              : language === 'hi'
-              ? "यह एक सामान्य चैटबॉट है जो विभिन्न विषयों पर किसी भी भाषा में आपकी मदद कर सकता है।"
-              : language === 'mr'
-              ? "हा एक सामान्य चॅटबॉट आहे जो कोणत्याही भाषेत विविध विषयांवर तुम्हाला मदत करू शकतो।"
-              : "Este es un chatbot general que puede ayudarte en cualquier idioma con varios temas."}
-          </p>
-          <p className="text-sm text-primary font-semibold">
-            {language === 'en'
-              ? "⚠️ For health-related queries or prescriptions, please use the AI Medical Assistant chatbots mentioned above (WhatsApp or Web)."
-              : language === 'hi'
-              ? "⚠️ स्वास्थ्य संबंधी प्रश्नों या नुस्खों के लिए, कृपया ऊपर उल्लिखित AI मेडिकल असिस्टेंट चैटबॉट (WhatsApp या वेब) का उपयोग करें।"
-              : language === 'mr'
-              ? "⚠️ आरोग्य संबंधित प्रश्न किंवा प्रिस्क्रिप्शनसाठी, कृपया वर नमूद केलेले AI मेडिकल असिस्टंट चॅटबॉट (WhatsApp किंवा वेब) वापरा।"
-              : "⚠️ Para consultas relacionadas con la salud o recetas, use los chatbots del Asistente Médico de IA mencionados arriba (WhatsApp o Web)."}
-          </p>
-        </div>
-
-        {messages.map((message, index) => (
-          <ChatMessage
-            key={index}
-            message={message.text}
-            isUser={message.isUser}
-          />
-        ))}
-      </div>
-
-      <div className="sticky bottom-0 border-t glass p-4">
-        <div className="max-w-4xl mx-auto">
-          <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} language={language} />
-        </div>
       </div>
     </div>
   );
 };
 
 export default Chat;
+

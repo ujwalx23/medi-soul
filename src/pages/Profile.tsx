@@ -378,22 +378,14 @@ const Profile = () => {
             </CardContent>
           </Card>
 
-          <div className="mt-6 grid md:grid-cols-2 gap-4">
+          <div className="mt-6">
             <Button
               onClick={() => navigate("/track-records")}
               variant="outline"
-              className="glass border-white/20"
+              className="glass border-white/20 w-full"
             >
               <Activity className="mr-2 h-4 w-4" />
               {t.viewMedicine}
-            </Button>
-            <Button
-              onClick={() => navigate("/chat")}
-              variant="outline"
-              className="glass border-white/20"
-            >
-              <FileText className="mr-2 h-4 w-4" />
-              {t.viewChat}
             </Button>
           </div>
         </div>

@@ -94,7 +94,16 @@ const ImageAnalysis = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<string | null>(null);
-  const [mode, setMode] = useState<"general" | "prescription">("general");
+  const [mode, setMode] = useState<"general" | "prescription" | "medicine">("general");
+  const [history, setHistory] = useState<any[]>([]);
+
+  const loadHistory = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    const { data } = await supabase.from("image_analysis_history" as any).select("*").order("created_at", { ascending: false }).limit(10);
+    setHistory((data as any) || []);
+  };
+  useState(() => { loadHistory(); });
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -156,9 +165,28 @@ For EACH medicine, list:
 
 If something is unclear or unreadable, say "Unclear — please confirm with your doctor or pharmacist." Never invent medicine names. End with: "⚠️ Always verify with your pharmacist before taking any medicine."`;
 
-      const generalPrompt = `You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand ${langName}. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. If it's a medicine package, explain the medicine details. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.`;
+      const generalPrompt = `You are an AI medical assistant. Analyze the provided image and explain it in simple, easy-to-understand ${langName}. If it's an X-ray or scan, explain what is visible. If it's a skin condition, suggest possible causes. Always recommend consulting a doctor. Be compassionate and clear. Keep response under 300 words.`;
 
-      const finalPrompt = mode === "prescription" ? prescriptionPrompt : generalPrompt;
+      const medicinePrompt = `You are an expert pharmacist AI. The user uploaded a photo of a medicine package, strip, bottle, or label. Reply ONLY in ${langName}. Carefully read the packaging (OCR) and provide:
+
+**💊 Medicine Name & Brand**
+**🧪 Active Ingredients / Composition** (each ingredient with strength)
+**🎯 What It Treats** (uses in simple words)
+**📋 How to Take**
+- Adult dosage
+- Frequency (how many times a day)
+- Before / after food
+- With water / how to swallow
+**⏰ When to Take** (morning/night/specific times)
+**⚠️ Side Effects to Watch**
+**🚫 Who Should NOT Take It** (contraindications)
+**🔄 Drug Interactions** (common ones)
+**💾 Storage** (temperature, away from children, etc.)
+**📅 Expiry / Batch** (if visible)
+
+End with: "⚠️ Always confirm dosage with your doctor or pharmacist before taking any medicine. Do not exceed the recommended dose."`;
+
+      const finalPrompt = mode === "prescription" ? prescriptionPrompt : mode === "medicine" ? medicinePrompt : generalPrompt;
 
       // Use edge function for image analysis
       const { data, error } = await supabase.functions.invoke('analyze-medical-image', {
@@ -172,6 +200,19 @@ If something is unclear or unreadable, say "Unclear — please confirm with your
 
       if (error) throw error;
       setAnalysisResult(data.analysis);
+
+      // Save to history if logged in
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        await supabase.from("image_analysis_history" as any).insert({
+          user_id: user.id,
+          mode,
+          image_preview: selectedImage.length < 200000 ? selectedImage : null,
+          analysis: data.analysis,
+          language,
+        });
+        loadHistory();
+      }
     } catch (err: any) {
       console.error("Image analysis error:", err);
       toast({ title: "Error", description: t.errorMsg, variant: "destructive" });
@@ -207,7 +248,7 @@ If something is unclear or unreadable, say "Unclear — please confirm with your
         </div>
 
         {/* Mode toggle */}
-        <div className="glass rounded-2xl p-2 mb-4 grid grid-cols-2 gap-2">
+        <div className="glass rounded-2xl p-2 mb-4 grid grid-cols-3 gap-2">
           <button
             onClick={() => setMode("general")}
             className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "general" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
@@ -218,7 +259,13 @@ If something is unclear or unreadable, say "Unclear — please confirm with your
             onClick={() => setMode("prescription")}
             className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "prescription" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
           >
-            <Stethoscope className="h-4 w-4" /> Prescription Reader
+            <Stethoscope className="h-4 w-4" /> Prescription
+          </button>
+          <button
+            onClick={() => setMode("medicine")}
+            className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all ${mode === "medicine" ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : "hover:bg-muted/50"}`}
+          >
+            <Pill className="h-4 w-4" /> Medicine
           </button>
         </div>
 

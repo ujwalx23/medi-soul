@@ -219,6 +219,36 @@ export type Database = {
         }
         Relationships: []
       }
+      image_analysis_history: {
+        Row: {
+          analysis: string
+          created_at: string
+          id: string
+          image_preview: string | null
+          language: string | null
+          mode: string
+          user_id: string
+        }
+        Insert: {
+          analysis: string
+          created_at?: string
+          id?: string
+          image_preview?: string | null
+          language?: string | null
+          mode?: string
+          user_id: string
+        }
+        Update: {
+          analysis?: string
+          created_at?: string
+          id?: string
+          image_preview?: string | null
+          language?: string | null
+          mode?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       medical_records: {
         Row: {
           created_at: string | null
