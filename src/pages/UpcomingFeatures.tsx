@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Watch, Brain, Calendar, FileText, Camera, TrendingUp, Users, Shield, Video, Pill } from "lucide-react";

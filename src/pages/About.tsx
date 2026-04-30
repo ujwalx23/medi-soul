@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Heart, Users, Target, Award } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
