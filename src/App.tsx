@@ -20,8 +20,7 @@ import Settings from "./pages/Settings";
 import TrackRecords from "./pages/TrackRecords";
 import UpcomingFeatures from "./pages/UpcomingFeatures";
 import ImageAnalysis from "./pages/ImageAnalysis";
-import FamilyHistory from "./pages/FamilyHistory";
-import FamilyProfiles from "./pages/FamilyProfiles";
+import FamilyHealth from "./pages/FamilyHealth";
 import Insurance from "./pages/Insurance";
 import NotFound from "./pages/NotFound";
 
@@ -51,8 +50,9 @@ const App = () => (
             <Route path="/track-records" element={<TrackRecords />} />
             <Route path="/upcoming-features" element={<UpcomingFeatures />} />
             <Route path="/image-analysis" element={<ImageAnalysis />} />
-            <Route path="/family-history" element={<FamilyHistory />} />
-            <Route path="/family-profiles" element={<FamilyProfiles />} />
+            <Route path="/family-health" element={<FamilyHealth />} />
+            <Route path="/family-history" element={<FamilyHealth />} />
+            <Route path="/family-profiles" element={<FamilyHealth />} />
             <Route path="/insurance" element={<Insurance />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
