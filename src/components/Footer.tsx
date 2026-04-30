@@ -61,7 +61,7 @@ export const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li><Link to="/health-guide" className="text-muted-foreground hover:text-primary transition">{t.healthGuide}</Link></li>
               <li><Link to="/insurance" className="text-muted-foreground hover:text-primary transition">{t.insurance}</Link></li>
-              <li><Link to="/family-profiles" className="text-muted-foreground hover:text-primary transition">{t.familyHealth}</Link></li>
+              <li><Link to="/family-health" className="text-muted-foreground hover:text-primary transition">{t.familyHealth}</Link></li>
               <li><Link to="/upcoming-features" className="text-muted-foreground hover:text-primary transition">{t.upcoming}</Link></li>
             </ul>
           </div>
