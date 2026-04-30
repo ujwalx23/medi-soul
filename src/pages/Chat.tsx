@@ -253,20 +253,13 @@ const Chat = () => {
           </div>
         </div>
 
-        {messages.map((message, index) => (
-          <ChatMessage
-            key={index}
-            message={message.text}
-            isUser={message.isUser}
-          />
-        ))}
       </div>
+    </div>
+  );
+};
 
-      <div className="sticky bottom-0 border-t glass p-4">
-        <div className="max-w-4xl mx-auto">
-          <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} language={language} />
-        </div>
-      </div>
+export default Chat;
+
     </div>
   );
 };
