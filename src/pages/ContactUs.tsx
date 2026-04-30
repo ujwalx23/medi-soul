@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Mail, MessageSquare, Globe, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -340,6 +341,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

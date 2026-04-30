@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { MessageSquare, Sparkles, FileText, Activity, Clock, Shield } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -192,6 +193,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

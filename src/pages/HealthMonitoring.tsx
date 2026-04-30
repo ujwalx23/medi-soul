@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Watch, Smartphone, Heart, Activity, TrendingUp, Clock } from "lucide-react";
@@ -144,6 +145,7 @@ const HealthMonitoring = () => {
           </p>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -19,29 +19,25 @@ export const Navbar = () => {
     en: {
       home: "Home", chat: "Chat", about: "About", contact: "Contact",
       healthGuide: "Health Guide", pharmacies: "Pharmacies", trackRecords: "Track Records",
-      imageAnalysis: "Image Analysis", familyHistory: "Family History",
-      familyProfiles: "Family Profiles", insurance: "Insurance",
+      imageAnalysis: "Image Analysis", familyHealth: "Family Health", insurance: "Insurance",
       profile: "Profile", upcomingFeatures: "Upcoming Features", login: "Login", logout: "Logout",
     },
     hi: {
       home: "होम", chat: "चैट", about: "हमारे बारे में", contact: "संपर्क करें",
       healthGuide: "स्वास्थ्य गाइड", pharmacies: "फार्मेसी", trackRecords: "रिकॉर्ड ट्रैक करें",
-      imageAnalysis: "छवि विश्लेषण", familyHistory: "पारिवारिक इतिहास",
-      familyProfiles: "परिवार प्रोफाइल", insurance: "बीमा",
+      imageAnalysis: "छवि विश्लेषण", familyHealth: "पारिवारिक स्वास्थ्य", insurance: "बीमा",
       profile: "प्रोफ़ाइल", upcomingFeatures: "आगामी सुविधाएं", login: "लॉगिन", logout: "लॉगआउट",
     },
     mr: {
       home: "मुख्यपृष्ठ", chat: "चॅट", about: "आमच्याबद्दल", contact: "संपर्क",
       healthGuide: "आरोग्य मार्गदर्शक", pharmacies: "फार्मसी", trackRecords: "रेकॉर्ड ट्रॅक करा",
-      imageAnalysis: "प्रतिमा विश्लेषण", familyHistory: "कौटुंबिक इतिहास",
-      familyProfiles: "कुटुंब प्रोफाइल", insurance: "विमा",
+      imageAnalysis: "प्रतिमा विश्लेषण", familyHealth: "कौटुंबिक आरोग्य", insurance: "विमा",
       profile: "प्रोफाइल", upcomingFeatures: "आगामी वैशिष्ट्ये", login: "लॉगिन", logout: "लॉगआउट",
     },
     es: {
       home: "Inicio", chat: "Chat", about: "Acerca de", contact: "Contacto",
       healthGuide: "Guía de Salud", pharmacies: "Farmacias", trackRecords: "Seguimiento",
-      imageAnalysis: "Análisis de Imagen", familyHistory: "Historia Familiar",
-      familyProfiles: "Perfiles Familiares", insurance: "Seguros",
+      imageAnalysis: "Análisis de Imagen", familyHealth: "Salud Familiar", insurance: "Seguros",
       profile: "Perfil", upcomingFeatures: "Próximas Funciones", login: "Iniciar sesión", logout: "Cerrar sesión",
     },
   };
@@ -66,8 +62,7 @@ export const Navbar = () => {
             <Link to="/pharmacies" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50">{t.pharmacies}</Link>
             <Link to="/track-records" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50">{t.trackRecords}</Link>
             <Link to="/image-analysis" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><ScanLine className="h-4 w-4" />{t.imageAnalysis}</Link>
-            <Link to="/family-history" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><Users className="h-4 w-4" />{t.familyHistory}</Link>
-            <Link to="/family-profiles" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><UsersRound className="h-4 w-4" />{t.familyProfiles}</Link>
+            <Link to="/family-health" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><UsersRound className="h-4 w-4" />{t.familyHealth}</Link>
             <Link to="/insurance" className="text-sm font-medium hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50 flex items-center gap-1"><Shield className="h-4 w-4" />{t.insurance}</Link>
             
             {user && (
@@ -145,8 +140,7 @@ export const Navbar = () => {
             <Link to="/pharmacies" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.pharmacies}</Link>
             <Link to="/track-records" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.trackRecords}</Link>
             <Link to="/image-analysis" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.imageAnalysis}</Link>
-            <Link to="/family-history" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyHistory}</Link>
-            <Link to="/family-profiles" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyProfiles}</Link>
+            <Link to="/family-health" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.familyHealth}</Link>
             <Link to="/insurance" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.insurance}</Link>
             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm font-medium hover:text-primary transition-colors">{t.contact}</Link>
             {user && (

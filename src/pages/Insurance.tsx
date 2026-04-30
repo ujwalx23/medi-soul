@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -290,6 +291,7 @@ const Insurance = () => {
           ℹ️ This directory is informational only. Always read policy documents and compare plans on official websites before purchasing. MediSoul does not sell or broker insurance.
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

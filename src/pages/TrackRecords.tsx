@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -328,6 +329,7 @@ const TrackRecords = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
