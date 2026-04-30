@@ -252,7 +252,7 @@ const About = () => {
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="text-center"><div className="text-3xl font-bold text-primary">1000+</div><div className="text-xs text-muted-foreground">Medical guidelines</div></div>
-                <div className="text-center"><div className="text-3xl font-bold text-accent">99%</div><div className="text-xs text-muted-foreground">Accuracy rate</div></div>
+                <div className="text-center"><div className="text-3xl font-bold text-accent">90+%</div><div className="text-xs text-muted-foreground">Accuracy rate</div></div>
                 <div className="text-center"><div className="text-3xl font-bold text-secondary">24/7</div><div className="text-xs text-muted-foreground">AI availability</div></div>
                 <div className="text-center"><div className="text-3xl font-bold text-primary">4</div><div className="text-xs text-muted-foreground">Languages</div></div>
               </div>
