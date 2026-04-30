@@ -380,6 +380,7 @@ End with: "⚠️ Always confirm dosage with your doctor or pharmacist before ta
           {t.disclaimer}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

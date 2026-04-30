@@ -291,6 +291,7 @@ const Insurance = () => {
           ℹ️ This directory is informational only. Always read policy documents and compare plans on official websites before purchasing. MediSoul does not sell or broker insurance.
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

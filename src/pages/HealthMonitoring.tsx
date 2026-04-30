@@ -145,6 +145,7 @@ const HealthMonitoring = () => {
           </p>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -299,6 +299,7 @@ const Pharmacies = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -329,6 +329,7 @@ const TrackRecords = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

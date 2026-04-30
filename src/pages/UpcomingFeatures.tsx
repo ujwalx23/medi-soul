@@ -143,6 +143,7 @@ const UpcomingFeatures = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

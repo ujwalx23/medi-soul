@@ -193,6 +193,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
