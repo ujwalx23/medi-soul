@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Heart, Users, Target, Award } from "lucide-react";
+import { Heart, Users, Target, Award, Globe2, ShieldCheck, Sparkles, Stethoscope, BookOpen, MapPin, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
@@ -205,6 +205,69 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {t.whyTrustText}
               </p>
+            </div>
+
+            {/* Our Story */}
+            <div className="glass rounded-2xl p-8">
+              <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                <BookOpen className="h-6 w-6 text-accent" /> Our Story
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                MediSoul was born from a simple observation: millions of people delay medical care because they don't know whether their symptoms warrant a visit to a doctor — or because language, distance, or cost stand in the way. We set out to build an always-on AI health companion that gives clear, evidence-based guidance to anyone with a phone.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Today, MediSoul combines large language models tuned on Drugs.com, NHS.uk, and WHO clinical content with image analysis for prescriptions, medicines, and visible symptoms — and connects users to nearby pharmacies, family health profiles, insurance options, and emergency resources.
+              </p>
+            </div>
+
+            {/* What MediSoul Offers */}
+            <div className="glass rounded-2xl p-8">
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Sparkles className="h-6 w-6 text-primary" /> What MediSoul Offers
+              </h2>
+              <div className="grid md:grid-cols-2 gap-5">
+                {[
+                  { icon: Stethoscope, title: "AI Symptom Triage", text: "Describe how you feel and get clear next-step guidance in seconds." },
+                  { icon: Target, title: "Image Analysis", text: "Snap prescriptions, medicines, lab reports, or skin issues for instant AI insight." },
+                  { icon: Users, title: "Family Health Hub", text: "Profiles, emergency contacts, and inherited disease risk — all in one tab." },
+                  { icon: Globe2, title: "4 Languages", text: "English, Hindi, Marathi & Spanish — pick yours and we adapt." },
+                  { icon: MapPin, title: "Pharmacy Finder", text: "Locate verified pharmacies near you with Google Maps integration." },
+                  { icon: ShieldCheck, title: "Insurance Hub", text: "Compare plans and pricing from leading global & Indian insurers." },
+                ].map((f, i) => (
+                  <div key={i} className="flex gap-3 p-4 rounded-xl bg-muted/30 border border-border/30">
+                    <f.icon className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold mb-1">{f.title}</h3>
+                      <p className="text-sm text-muted-foreground">{f.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* By the numbers */}
+            <div className="glass rounded-2xl p-8">
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Award className="h-6 w-6 text-secondary" /> By the Numbers
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center"><div className="text-3xl font-bold text-primary">1000+</div><div className="text-xs text-muted-foreground">Medical guidelines</div></div>
+                <div className="text-center"><div className="text-3xl font-bold text-accent">99%</div><div className="text-xs text-muted-foreground">Accuracy rate</div></div>
+                <div className="text-center"><div className="text-3xl font-bold text-secondary">24/7</div><div className="text-xs text-muted-foreground">AI availability</div></div>
+                <div className="text-center"><div className="text-3xl font-bold text-primary">4</div><div className="text-xs text-muted-foreground">Languages</div></div>
+              </div>
+            </div>
+
+            {/* Get in touch */}
+            <div className="glass rounded-2xl p-8">
+              <h2 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                <Mail className="h-6 w-6 text-primary" /> Get in Touch
+              </h2>
+              <p className="text-muted-foreground mb-4">Have feedback, partnership ideas, or need help? We'd love to hear from you.</p>
+              <div className="flex flex-wrap gap-3">
+                <a href="mailto:support@medisoul.app" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary"><Mail className="h-4 w-4" /> support@medisoul.app</a>
+                <a href="tel:+15817019840" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent"><Phone className="h-4 w-4" /> +1 581 701 9840</a>
+              </div>
             </div>
           </div>
         </div>
